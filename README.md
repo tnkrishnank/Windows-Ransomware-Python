@@ -4,4 +4,4 @@ This ransomware encrypts the file and makes it unreadable for human. It generate
 
 NOTE : It is made only for educational purposes. Any responsibilities regarding illegal activities done using this will not be accepted by us.
 
-Tech Stack Used : Python
+### Tech Stack Used : Python
