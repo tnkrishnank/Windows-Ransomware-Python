@@ -17,14 +17,14 @@ def decrypt():
     for part in range(65, 91):
         if part != 67:
             partpath = chr(part) + ":\\"
-            try:
-                for dirpath, dirs, files in os.walk(partpath, topdown = True):
-                    dirpath = dirpath + "\\"
-                    for filename in files:
-                        fname = dirpath + filename
-                        chk = ".nk"
-                        if fname[-3:] == chk:
-                            nfname = fname[:-3]
+            for dirpath, dirs, files in os.walk(partpath, topdown = True):
+                dirpath = dirpath + "\\"
+                for filename in files:
+                    fname = dirpath + filename
+                    chk = ".nk"
+                    if fname[-3:] == chk:
+                        nfname = fname[:-3]
+                        try:
                             with open(fname, 'rb') as f:
                                 data = pickle.load(f)
                             os.rename(fname, nfname)
@@ -34,7 +34,7 @@ def decrypt():
                                 pt = rsa.decrypt(data[i], pk)
                                 with open(nfname, 'ab') as f:
                                     f.write(pt)
-            except:
-                pass
+                        except:
+                            pass
 
 decrypt()
