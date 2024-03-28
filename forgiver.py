@@ -28,7 +28,7 @@ def createDecryptor():
 c = input('ENTER MEMBER ID : ')
 privateKey = getPrivateKey()
 createDecryptor()
-createExe = "pyinstaller -F d" + c + ".py"
+createExe = "pyinstaller -F --noconsole d" + c + ".py"
 spec = "del d" + c + ".spec"
 os.system(createExe)
 os.system("rmdir /s /q __pycache__")
